@@ -227,7 +227,7 @@ void updateData() {
   Serial.println("...done.");
   delete astronomyClient;
   astronomyClient = nullptr;
-  moonAgeImage = String((char) (65 + 26 * (((astronomy.moonAge.toInt()) % 30) / 30.0)));
+  moonAgeImage = String((char) (65 + 26 * (((abs((astronomy.hemisphere=="North"?0:30)-astronomy.moonAge.toInt())) % 30) / 30.0)));
 
   // Wait max. 3 seconds to make sure the time has been sync'ed
   Serial.println("\nWaiting for time");
